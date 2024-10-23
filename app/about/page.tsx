@@ -4,6 +4,7 @@ import { Twitter, Instagram, Facebook } from 'lucide-react';
 import Image from 'next/image';
 import Header from '@/app/components/Header';
 import team1 from '@/app/assets/images/team1.jpg';
+import MainTemplate from '@/app/components/MainTemplate';
 
 const AboutPage = () => {
     const teamMembers = [
@@ -13,7 +14,7 @@ const AboutPage = () => {
     ];
 
     return (
-        <>
+        <MainTemplate>
             <Header />
             <div className="max-w-4xl mx-auto px-4 py-8">
                 <section className="mb-12">
@@ -51,7 +52,7 @@ const AboutPage = () => {
                     </div>
                 </section>
             </div>
-        </>
+        </MainTemplate>
     );
 };
 

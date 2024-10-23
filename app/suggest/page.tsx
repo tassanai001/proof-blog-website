@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { AlertCircle } from 'lucide-react';
 import { Alert, AlertDescription } from '@/app/components/ui/Alert';
 import Header from '@/app/components/Header';
+import MainTemplate from '@/app/components/MainTemplate';
 
 const Page = () => {
   const [formData, setFormData] = useState({
@@ -51,7 +52,7 @@ const Page = () => {
   };
 
   return (
-    <>
+    <MainTemplate>
       <Header />
       <div className="mx-auto p-4">
         <h1 className="text-4xl font-bold mb-4">Suggest an article</h1>
@@ -130,7 +131,7 @@ const Page = () => {
           </button>
         </form>
       </div>
-    </>
+    </MainTemplate>
   );
 };
 

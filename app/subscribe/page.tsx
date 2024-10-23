@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Header from '@/app/components/Header';
+import MainTemplate from '@/app/components/MainTemplate';
 
 const SubscribeToProofForm = () => {
   const [formData, setFormData] = useState({
@@ -50,7 +51,7 @@ const SubscribeToProofForm = () => {
   };
 
   return (
-    <>
+    <MainTemplate>
       <Header />
       <div className="mx-auto p-4">
         <h1 className="text-5xl font-bold mb-4">Subscribe to Proof</h1>
@@ -112,7 +113,7 @@ const SubscribeToProofForm = () => {
           </button>
         </form>
       </div>
-    </>
+    </MainTemplate>
   );
 };
 
