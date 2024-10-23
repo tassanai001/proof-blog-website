@@ -1,61 +1,98 @@
 "use client"
 
-import { useState } from 'react';
+import Header from '@/app/components/Header';
 import Image from 'next/image';
-import Header, { SuggestType } from '@/app/components/Header';
-import Content from '@/app/components/Content';
-import Footer from '@/app/components/Footer';
-import SuggestArticleForm from '@/app/components/SuggestArticleForm';
-import SubscribeToProofForm from '@/app/components/SubscribeToProofForm';
-import AboutProofPageForm from '@/app/components/AboutProofPageForm';
 
-import heroImage from '@/app/assets/images/hero-image.jpg';
+import article1 from '@/app/assets/images/article1.jpg';
+
+const articles = [
+  {
+    title: '21st Century Ansel Adams',
+    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
+    image: article1,
+    date: 'March 2, 2014',
+    categories: ['Camera', 'Nature'],
+  },
+  {
+    title: '21st Century Ansel Adams',
+    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
+    image: article1,
+    date: 'March 2, 2014',
+    categories: ['Camera', 'Nature'],
+  }, {
+    title: '21st Century Ansel Adams',
+    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
+    image: article1,
+    date: 'March 2, 2014',
+    categories: ['Camera', 'Nature'],
+  }, {
+    title: '21st Century Ansel Adams',
+    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
+    image: article1,
+    date: 'March 2, 2014',
+    categories: ['Camera', 'Nature'],
+  }, {
+    title: '21st Century Ansel Adams',
+    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
+    image: article1,
+    date: 'March 2, 2014',
+    categories: ['Camera', 'Nature'],
+  }, {
+    title: '21st Century Ansel Adams',
+    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
+    image: article1,
+    date: 'March 2, 2014',
+    categories: ['Camera', 'Nature'],
+  }, {
+    title: '21st Century Ansel Adams',
+    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
+    image: article1,
+    date: 'March 2, 2014',
+    categories: ['Camera', 'Nature'],
+  }, {
+    title: '21st Century Ansel Adams',
+    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
+    image: article1,
+    date: 'March 2, 2014',
+    categories: ['Camera', 'Nature'],
+  }, {
+    title: '21st Century Ansel Adams',
+    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
+    image: article1,
+    date: 'March 2, 2014',
+    categories: ['Camera', 'Nature'],
+  }, {
+    title: '21st Century Ansel Adams',
+    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
+    image: article1,
+    date: 'March 2, 2014',
+    categories: ['Camera', 'Nature'],
+  },
+];
+
 
 export default function Home() {
-  const [contentType, setContentType] = useState(SuggestType.Article);
-
-
-  const toggleSuggestForm = (type: SuggestType) => {
-    setContentType(type);
-  };
 
   return (
-    <div className="flex min-h-screen">
-      {/* Left side - Hero Image and Footer */}
-      <div className="w-1/2 fixed left-0 top-0 h-screen flex flex-col">
-        <div className="flex-grow relative">
-          <Image
-            src={heroImage}
-            alt="Nature scenery"
-            layout="fill"
-            objectFit="cover"
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center text-white">
-            <div className="border border-white p-4 mb-4">
-              <h1 className="text-6xl font-bold">PROOF</h1>
+    <>
+      <Header />
+      <main className="p-4">
+        {articles.map((article, index) => (
+          <article key={index} className="flex mb-8 border-b pb-4">
+            <Image src={article.image} alt={article.title} width={100} height={100} className="mr-4" />
+            <div>
+              <h2 className="text-xl font-bold mb-2">{article.title}</h2>
+              <p className="mb-2">{article.excerpt}</p>
+              <div className="text-sm text-gray-500">
+                <span>{article.date}</span>
+                {article.categories.map((category, i) => (
+                  <span key={i} className="ml-2 bg-gray-200 px-2 py-1 rounded">{category}</span>
+                ))}
+              </div>
             </div>
-            <h2 className="text-3xl mb-2">Explore.</h2>
-            <h2 className="text-3xl mb-2">Shoot.</h2>
-            <h2 className="text-3xl mb-4">Write.</h2>
-            <p className="text-xl">A Nature Photography Magazine</p>
-            <p className="text-lg">By Billy Rogers</p>
-          </div>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0">
-          <Footer />
-        </div>
-      </div>
-
-      {/* Right side - Content */}
-      <div className="w-1/2 ml-[50%] h-screen overflow-hidden hover:overflow-auto transition-all duration-300">
-        <div className="min-h-screen">
-          <Header onSuggestClick={(title: SuggestType) => toggleSuggestForm(title)} />
-          {contentType === SuggestType.Article ? <Content /> : <></>}
-          {contentType === SuggestType.Suggest ? <SuggestArticleForm /> : <></>}
-          {contentType === SuggestType.Subscribe ? <SubscribeToProofForm /> : <></>}
-          {contentType === SuggestType.About ? <AboutProofPageForm /> : <></>}
-        </div>
-      </div>
-    </div>
+          </article>
+        ))}
+      </main>
+    </>
   );
 }

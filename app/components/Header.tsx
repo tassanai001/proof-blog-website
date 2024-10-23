@@ -1,23 +1,18 @@
-interface HeaderProps {
-    onSuggestClick: (title: SuggestType) => void
-}
+"use client"
 
-export enum SuggestType {
-    Article = "ARTICLE",
-    Suggest = "SUGGEST",
-    Subscribe = "SUBSCRIBE",
-    About = "ABOUT",
-}
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
-export default function Header({ onSuggestClick }: HeaderProps) {
+export default function Header() {
+    const pathname = usePathname()
     return (
         <header className="flex justify-between items-center p-4 border-b">
             <nav>
                 <ul className="flex space-x-4">
-                    <li><a href="#" onClick={(e) => { e.preventDefault(); onSuggestClick(SuggestType.Article); }} className="text-green-600">ARTICLES</a></li>
-                    <li><a href="#" onClick={(e) => { e.preventDefault(); onSuggestClick(SuggestType.Suggest); }}>SUGGEST</a></li>
-                    <li><a href="#" onClick={(e) => { e.preventDefault(); onSuggestClick(SuggestType.Subscribe); }} >SUBSCRIBE</a></li>
-                    <li><a href="#" onClick={(e) => { e.preventDefault(); onSuggestClick(SuggestType.About); }}>ABOUT</a></li>
+                    <li><Link className={pathname === "/" ? "text-green-600" : ""} href="/">ARTICLES</Link></li>
+                    <li><Link className={pathname === "/suggest" ? "text-green-600" : ""} href="/suggest">SUGGEST</Link></li>
+                    <li><Link className={pathname === "/subscribe" ? "text-green-600" : ""} href="/subscribe">SUBSCRIBE</Link></li>
+                    <li><Link className={pathname === "/about" ? "text-green-600" : ""} href="/about">ABOUT</Link></li>
                 </ul>
             </nav>
         </header>
